@@ -1,5 +1,6 @@
 {
   "name": "swap2words",
+  "publisher": "sherlocknieh",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
   "repository": {
@@ -7,6 +8,7 @@
     "url": "https://github.com/sherlocknieh/swap2words"
   },
   "version": "1.0.0",
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.110.0"
   },
