@@ -1,4 +1,5 @@
 {
-  "extension.description": "Swap head/tail words in selected text, or head/tail characters for a single word.",
+  "extension.displayName": "SWAP Head & Tail Words",
+  "extension.description": "Swap head/tail words in selected text",
   "command.swapWords.title": "SWAP Head & Tail"
 }
