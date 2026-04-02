@@ -2,7 +2,7 @@
   "name": "swap2words",
   "displayName": "swap2words",
   "description": "%extension.description%",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.110.0"
   },

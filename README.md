@@ -1,71 +1,96 @@
-# swap2words README
+# swap2words
 
-This is the README for your extension "swap2words". After writing up a brief description, we recommend including the following sections.
+[中文](#简介) | [English](#introduction)
 
-## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 简介
 
-For example if there is an image subfolder under your extension project workspace:
+开发此插件是为了实现类似 "快速交换算式两边的式子,符号留在中间" 的功能;
 
-\!\[feature X\]\(images/feature-x.png\)
+采用了 "交换首尾单词" 的逻辑来实现, 所以也很方便用来交换相邻两个单词;
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+如果选中的文本只包含一个单词, 则交换首尾字符.
 
-## Requirements
+## 使用示例
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-## Extension Settings
+- 选中 `中文 | English` 快速交换为 `English | 中文`
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- 选中 `”中文引号“` 快速交换得 `“中文引号”`
 
-For example:
+- 在 `mian` 中选中 `ia` 快速交换得 `main`
 
-This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
 
-## Known Issues
+## 使用方式
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+鼠标:
 
-## Release Notes
+- 在编辑器中选中文本。
+- 右键选择 "SWAP: 交换首尾"
 
-Users appreciate release notes as you update your extension.
+键盘：
 
-### 1.0.0
+- 目前没有设置默认快捷键
+- 需要的话可自行添加:
 
-Initial release of ...
+```json
+// keybindings.json
+{
+  "key": "ctrl+shift+left",
+  "command": "swap2words.swapWords",
+  "when": "editorTextFocus && editorHasSelection"
+}
+```
 
-### 1.0.1
+## 后续计划
 
-Fixed issue #.
+- 目前仅靠空白字符拆分单词;
+- 以后可能支持更多常见字符, 如: `+`, `-`, `*`, `/`, `,`, `|`, `=`, `:` 等等.
+- 以后也许还会支持不等式变号, 如: `a >= b` 交换成 `b <= a`.
 
-### 1.1.0
 
-Added features X, Y, and Z.
+## Introduction
 
----
+This extension is designed for quick text swapping scenarios, such as swapping the two sides of an expression while keeping the operator in the middle.
 
-## Following extension guidelines
+It's implemented by "swapping the head and tail", so it is also useful for swapping two neighbouring words.
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+If the selected text contains only one word, the extension swaps the first and last characters instead.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+## Examples
 
-## Working with Markdown
+- Swap `sin(x) = f(x)` to get `f(x) = sin(x)`;
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+- Swap `ie` in `recieve` to get `receive`;
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+- Swap `2, 1,` in `[2, 1, 3]` to get `[1, 2, 3]`;
 
-## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+## Usage
 
-**Enjoy!**
+Mouse:
+
+- Select text in the editor.
+- Right-click and choose `SWAP Head & Tail`.
+
+Keyboard:
+
+- No default shortcut is assigned.
+- You can add one yourself if needed:
+
+```json
+// keybindings.json
+{
+  "key": "ctrl+shift+left",
+  "command": "swap2words.swapWords",
+  "when": "editorTextFocus && editorHasSelection"
+}
+```
+
+## Future Plans
+
+- Currently, words are split only by whitespace.
+- In the future, support may be added for more common symbols, such as `+`, `-`, `*`, `/`, `,`, `|`, `=`, `:` and more.
+- Inequality sign swapping may also be supported later, for example converting `a >= b` to `b <= a`.
+
