@@ -1,4 +1,4 @@
-# swap2words
+# Swap-Words
 
 [中文](#简介) | [English](#introduction)
 
@@ -13,6 +13,7 @@
 
 ## 使用示例
 
+- 选中 `a = b` 快速交换得 `b = a`
 
 - 选中 `中文 | English` 快速交换为 `English | 中文`
 
@@ -34,11 +35,11 @@
 - 目前没有设置默认快捷键
 - 需要的话可自行添加:
 
+keybindings.json
 ```json
-// keybindings.json
 {
   "key": "ctrl+shift+left",
-  "command": "swap2words.swapWords",
+  "command": "swap-words.swapWords",
   "when": "editorTextFocus && editorHasSelection"
 }
 ```
@@ -60,7 +61,7 @@ If the selected text contains only one word, the extension swaps the first and l
 
 ## Examples
 
-- Swap `sin(x) = f(x)` to get `f(x) = sin(x)`;
+- Swap `a = b` to get `b = a`;
 
 - Swap `ie` in `recieve` to get `receive`;
 
@@ -79,11 +80,11 @@ Keyboard:
 - No default shortcut is assigned.
 - You can add one yourself if needed:
 
+keybindings.json
 ```json
-// keybindings.json
 {
   "key": "ctrl+shift+left",
-  "command": "swap2words.swapWords",
+  "command": "swap-words.swapWords",
   "when": "editorTextFocus && editorHasSelection"
 }
 ```

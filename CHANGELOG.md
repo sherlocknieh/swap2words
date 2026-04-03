@@ -1,6 +1,6 @@
 # Change Log
 
 
-## [1.0.0] - 2026-04-02
+## [1.0.0] - 2026-04-03
 
-- Initial release of swap2words extension.
+- Initial release.

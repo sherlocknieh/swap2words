@@ -51,7 +51,7 @@ export function swapFirstLastWordOrChar(selectedText: string): string {
 export function activate(context: vscode.ExtensionContext) {
 
 	// 注册交换首尾单词的命令
-	const swapWordsDisposable = vscode.commands.registerCommand('swap2words.swapWords', () => {
+	const swapWordsDisposable = vscode.commands.registerCommand('swap-words.swapWords', () => {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) {
 			return;

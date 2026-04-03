@@ -1,11 +1,11 @@
 {
-  "name": "swap2words",
+  "name": "swap-words",
   "publisher": "sherlocknieh",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sherlocknieh/swap2words"
+    "url": "https://github.com/sherlocknieh/swap-words"
   },
   "version": "1.0.0",
   "icon": "logo.png",
@@ -19,18 +19,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "swap2words.swapWords",
+        "command": "swap-words.swapWords",
         "title": "%command.swapWords.title%"
-      },
-      {
-        "command": "swap2words.helloWorld",
-        "title": "Hello World"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "swap2words.swapWords",
+          "command": "swap-words.swapWords",
           "group": "1_modification",
           "when": "editorTextFocus && editorHasSelection"
         }
