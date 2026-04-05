@@ -36,7 +36,8 @@
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test test/swap.test.mjs"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
