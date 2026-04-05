@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/sherlocknieh/swap-words"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icon": "logo.png",
   "engines": {
     "vscode": "^1.110.0"
