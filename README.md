@@ -1,26 +1,36 @@
 # Swap-Words
 
-[中文](#简介) | [English](#introduction)
+[English](#introduction) | [中文](#简介)
 
 
 ## 简介
 
-开发此插件是为了实现类似 "快速交换算式两边的式子,符号留在中间" 的功能;
+开发此插件的初衷是实现 "快速交换算式两边的式子, 而符号留在中间" 的功能, 避免总是需要两次剪切粘贴+后续调整空格的麻烦;
 
-采用了 "交换首尾单词" 的逻辑来实现, 所以也很方便用来交换相邻两个单词;
-
-如果选中的文本只包含一个单词, 则交换首尾字符.
+采用了 "交换首尾单词" 的简单逻辑来实现; 
 
 ## 使用示例
 
+使用空白字符 (空格,制表符,换行符) 区分单词:
+
 - 选中 `a = b` 快速交换得 `b = a`
+- 选中 `中文 | English` 快速交换得 `English | 中文`
 
-- 选中 `中文 | English` 快速交换为 `English | 中文`
 
+如果文本中只含一个单词, 则交换首尾字符;
+
+- 选中 `abc` 快速交换得 `cba`
 - 选中 `”中文引号“` 快速交换得 `“中文引号”`
 
-- 在 `mian` 中选中 `ia` 快速交换得 `main`
 
+额外支持一些分隔符, 这些情况下没有空格也能正确区分:
+
+- 选中 `13,12,11` 快速交换得 `11,12,13`;
+
+目前支持的分隔符已全部在此列出:
+
+- 常见分隔符: `,`, `;`, `|`, `"`,
+- 常见运算符: `<`, `>`, `=`, `<=`, `>=`, `!=`;
 
 
 ## 使用方式
@@ -44,41 +54,48 @@ keybindings.json
 }
 ```
 
-## 后续计划
+## TODO
 
-- 目前仅靠空白字符拆分单词;
-- 以后可能支持更多常见字符, 如: `+`, `-`, `*`, `/`, `,`, `|`, `=`, `:` 等等.
-- 以后也许还会支持不等式变号, 如: `a >= b` 交换成 `b <= a`.
+- 后续可能支持括号识别, 把带括号的内容识别为一个整体;
+- 未来可能支持不等式变号, 例如 `a > b` 交换后变为 `b < a`;
 
 
 ## Introduction
 
-This extension is designed for quick text swapping scenarios, such as swapping the two sides of an expression while keeping the operator in the middle.
+This extension was created to quickly swap the two sides of an expression while keeping separators in the middle, so you do not need repeated cut-paste and manual spacing fixes.
 
-It's implemented by "swapping the head and tail", so it is also useful for swapping two neighbouring words.
-
-If the selected text contains only one word, the extension swaps the first and last characters instead.
+It is implemented with a simple "swap head and tail words" strategy.
 
 ## Examples
 
-- Swap `a = b` to get `b = a`;
+Words can be split by whitespace (space, tab, newline):
 
-- Swap `ie` in `recieve` to get `receive`;
+- Select `a = b` to get `b = a`
 
-- Swap `2, 1,` in `[2, 1, 3]` to get `[1, 2, 3]`;
+If the selected text contains only one word, the first and last characters are swapped:
 
+- Select `abc` to get `cba`
+
+Additional separators are also supported, so swapping works even without spaces:
+
+- Select `13,12,11` to get `11,12,13`
+
+All currently supported separators are listed below:
+
+- Common separators: `,`, `;`, `|`, `"`
+- Common operators: `<`, `>`, `=`, `<=`, `>=`, `!=`
 
 ## Usage
 
 Mouse:
 
 - Select text in the editor.
-- Right-click and choose `SWAP Head & Tail`.
+- Right-click and choose `SWAP HEAD & TAIL`.
 
 Keyboard:
 
 - No default shortcut is assigned.
-- You can add one yourself if needed:
+- Add one manually if needed:
 
 keybindings.json
 ```json
@@ -89,9 +106,7 @@ keybindings.json
 }
 ```
 
-## Future Plans
+## TODO
 
-- Currently, words are split only by whitespace.
-- In the future, support may be added for more common symbols, such as `+`, `-`, `*`, `/`, `,`, `|`, `=`, `:` and more.
-- Inequality sign swapping may also be supported later, for example converting `a >= b` to `b <= a`.
-
+- Support bracket-aware parsing so bracketed content can be treated as a whole.
+- Support inequality inversion in the future, for example `a > b` becomes `b < a` after swapping.
