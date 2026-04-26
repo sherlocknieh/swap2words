@@ -1,16 +1,32 @@
-// token: 包含单词和分隔符
-const tokenPattern = /\s+|!=|[;,|"<>=]+|(?:!(?!=)|[^\s;,|"<>!=])+/g;
-// 分隔符
-const separatorTokenPattern = /^(?:\s+|!=|[;,|"<>=]+)$/;
+// 简单模式
+// token: 单词串和空白串
+const tokenPattern = /\s+|\S+/g;
+// 分隔符: 空白串
+const separatorPattern = /^\s+$/;
+
+// 增强模式
+// token: 单词,空白串,特定字符序列
+const tokenPatternPlus = /\s+|!=|[;,|"<>=]+|(?:!(?!=)|[^\s;,|"<>!=])+/g;
+// 分隔符: 空白串,特定字符序列
+const separatorPatternPlus = /^(?:\s+|!=|[;,|"<>=]+)$/;
+// 支持 `,` `;` `|` `"` `<` `>` `=` `<=` `>=` `!=`
+
+
+export type SwapOptions = {
+	plus?: boolean;
+};
 
 // 文本交换逻辑
-export function swapSelectedText(selectedText: string): string {
+export function swapSelectedText(selectedText: string, options?: SwapOptions): string {
+	const usePlus = options?.plus === true;
+	const activeTokenPattern = usePlus ? tokenPatternPlus : tokenPattern;
+	const activeSeparatorPattern = usePlus ? separatorPatternPlus : separatorPattern;
 
     // 使用正则表达式分割文本为 token 列表
-	const tokens = selectedText.match(tokenPattern) ?? [];
+	const tokens = selectedText.match(activeTokenPattern) ?? [];
     // 获取所有单词的索引
 	const wordTokenIndexes = tokens
-		.map((token, index) => (!separatorTokenPattern.test(token) ? index : -1))
+		.map((token, index) => (!activeSeparatorPattern.test(token) ? index : -1))
 		.filter(index => index !== -1);
     // 如果没有单词, 直接返回原文本
 	if (wordTokenIndexes.length === 0) {

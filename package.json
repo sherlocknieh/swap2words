@@ -3,11 +3,12 @@
   "publisher": "sherlocknieh",
   "displayName": "%extension.displayName%",
   "description": "%extension.description%",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sherlocknieh/swap-words"
   },
-  "version": "1.1.0",
+  "version": "1.1.1",
   "icon": "logo.png",
   "engines": {
     "vscode": "^1.110.0"
@@ -21,6 +22,10 @@
       {
         "command": "swap-words.swapWords",
         "title": "%command.swapWords.title%"
+      },
+      {
+        "command": "swap-words.swapWords.plus",
+        "title": "%command.swapWords.plus.title%"
       }
     ],
     "menus": {
@@ -28,6 +33,11 @@
         {
           "command": "swap-words.swapWords",
           "group": "1_modification",
+          "when": "editorTextFocus && editorHasSelection"
+        },
+        {
+          "command": "swap-words.swapWords.plus",
+          "group": "1_modification@1",
           "when": "editorTextFocus && editorHasSelection"
         }
       ]
@@ -37,7 +47,8 @@
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "test": "npm run compile && node --test test/swap.test.mjs"
+    "test": "npm run compile && node --test test/swap.test.mjs",
+    "package": "npx @vscode/vsce@latest package"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",

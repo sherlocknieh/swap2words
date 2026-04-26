@@ -1,5 +1,6 @@
 {
   "extension.displayName": "交换首尾文字",
   "extension.description": "交换所选文本的首尾单词, 只选中一个单词时交换首尾字符",
-  "command.swapWords.title": "SWAP: 交换首尾"
+  "command.swapWords.title": "SWAP: 交换首尾",
+  "command.swapWords.plus.title": "SWAP: 交换首尾 (Plus)"
 }

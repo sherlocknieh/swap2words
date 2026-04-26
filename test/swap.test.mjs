@@ -25,3 +25,11 @@ test('swaps the first and last words while preserving separators', () => {
 test('swaps characters inside a single word', () => {
 	deepStrictEqual(swapSelectedText('ia'), 'ai');
 });
+
+test('supports whitespace-only split mode', () => {
+	deepStrictEqual(swapSelectedText('13,12,11', { whitespaceOnly: true }), '13,12,11');
+
+	deepStrictEqual(swapSelectedText('left right', { whitespaceOnly: true }), 'right left');
+
+	deepStrictEqual(swapSelectedText('x!=y', { whitespaceOnly: true }), 'y!=x');
+});
